@@ -209,3 +209,6 @@ __marimo__/
 
 # csv files
 data/*
+/lgbm_model.pkl
+/tfidf_vectorizer.pkl
+/experiment_info.json
