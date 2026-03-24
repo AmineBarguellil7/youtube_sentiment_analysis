@@ -15,7 +15,7 @@ To address dataset imbalance, multiple resampling techniques such as SMOTE, ADAS
 Next, hyperparameter optimization is conducted using Optuna across several models including Random Forest, XGBoost, and LightGBM. 
 Finally, a stacking ensemble is implemented to combine the strengths of multiple models and further enhance prediction performance.
 
-**Key tools & libraries**: pandas, scikit-learn, NLTK, imbalanced-learn, LightGBM, XGBoost, Optuna, MLflow, seaborn, matplotlib, WordCloud.
+**Key tools & libraries** — pandas, scikit-learn, NLTK, imbalanced-learn, LightGBM, XGBoost, Optuna, MLflow, seaborn, matplotlib, WordCloud.
 
 
 
@@ -27,7 +27,7 @@ Create a s3 bucket
 Create EC2 machine (Ubuntu) & add Security groups 5000 port(MLflow Port)
 
 
-# Run the following commands on EC2 machine:
+## Run the following commands on EC2 machine:
 sudo apt update
 
 sudo apt install python3-pip
@@ -49,84 +49,85 @@ pipenv install boto3
 pipenv shell
 
 
-# Then set aws credentials
+## Then set aws credentials
 aws configure
 
 
-# Finally 
+## Finally 
 mlflow server \
 -h 0.0.0.0 \
 --disable-security-middleware \
 --default-artifact-root s3://mlflow-bucket-amine
 
-# MLflow Tracking Server
+## MLflow Tracking Server
 
 The MLflow tracking server is hosted on an AWS EC2 instance and can be accessed via:
 **http://ec2-54-147-36-34.compute-1.amazonaws.com:5000/**
 
 This allows visualization of experiments, metrics, parameters, and artifacts through the MLflow UI.
 
-# Configure MLflow Tracking URI
+## Configure MLflow Tracking URI
 
 Set the MLflow tracking URI to log experiments to the remote server:
 **export MLFLOW_TRACKING_URI=http://ec2-54-147-36-34.compute-1.amazonaws.com:5000/**
 
 
-## ⚙️ Environment Setup
+# ⚙️ Environment Setup
 
-# Create a virtual environment
+## Create a virtual environment
 py -3.11 -m venv comment-analysis  
-# Creates a virtual environment named `comment-analysis`
+### Creates a virtual environment named `comment-analysis`
 
-# Activate the virtual environment
+## Activate the virtual environment
 
-# Windows
+### Windows
 comment-analysis\Scripts\activate
 
-# Install required dependencies
+## Install required dependencies
 pip install -r requirements.txt
 
-# This installs all required packages for data preprocessing,
-# model training, MLflow experiment tracking, and DVC pipeline execution
+### This installs all required packages for data preprocessing,
+### model training, MLflow experiment tracking, and DVC pipeline execution
 
 
-## 🔁 DVC (Data Version Control)
+# 🔁 DVC (Data Version Control)
 
-# Initialize DVC in the project
+## Initialize DVC in the project
 dvc init  
-# Enables data, model, and pipeline versioning
+### Enables data, model, and pipeline versioning
 
-# Reproduce the ML pipeline
+## Reproduce the ML pipeline
 dvc repro  
-# Executes the pipeline stages defined in dvc.yaml:
-# - Data ingestion (Load raw dataset)
-# - Transformation (Clean and preprocess data)
-# - Model training (Train ML model)
-# - Evaluation (Measure model performance)
+### Executes the pipeline stages defined in dvc.yaml:
+### - Data ingestion (Load raw dataset)
+### - Transformation (Clean and preprocess data)
+### - Model training (Train ML model)
+### - Evaluation (Measure model performance)
+### - Model registration (Register model in MLflow Model Registry)
 
-# Visualize the pipeline workflow
+## Visualize the pipeline workflow
 dvc dag  
-# Displays the Directed Acyclic Graph (DAG) showing
-# stage dependencies and pipeline execution order
+### Displays the Directed Acyclic Graph (DAG) showing
+### stage dependencies and pipeline execution order
 
 
-## 🚀 AWS CI/CD Deployment with GitHub Actions
+# 🚀 AWS CI/CD Deployment with GitHub Actions
 
-# 1. Login to AWS Console
+## 1. Login to AWS Console
 
 Login to your AWS account to start configuring the deployment infrastructure.
 
-# 2. Create IAM User for Deployment with Required Access
+## 2. Create IAM User for Deployment with Required Access
 
 Create an IAM user with the following permissions:
 
-## Access Requirements
+### Access Requirements
 
 	1. **EC2 Access** — Used to launch and manage virtual machines  
     2. **ECR Access** — Elastic Container Registry to store Docker images
 
 
-## Deployment Workflow Description
+### Deployment Workflow Description
 
 	1. Build Docker image from source code  
 	2. Push Docker image to AWS ECR  
@@ -134,23 +135,23 @@ Create an IAM user with the following permissions:
 	4. Pull Docker image from ECR into EC2  
 	5. Launch Docker container on EC2
 
-## Required IAM Policies
+### Required IAM Policies
 
 	1. `AmazonEC2ContainerRegistryFullAccess`  
 	2. `AmazonEC2FullAccess`
 
 	
-# 3. Create ECR Repository to Store Docker Image
+## 3. Create ECR Repository to Store Docker Image
 
 Create a repository in AWS ECR and save the repository URI: Example:
-    - Save the URI: 471112652353.dkr.ecr.us-east-1.amazonaws.com/mlproject
+    - Save the URI: 851725646816.dkr.ecr.us-east-1.amazonaws.com/mlproject
 
 	
-# 4. Create EC2 Instance (Ubuntu)
+## 4. Create EC2 Instance (Ubuntu)
 
 Launch an Ubuntu EC2 instance that will host the deployed Docker container.
 
-# 5. Install Docker on EC2 Machine
+## 5. Install Docker on EC2 Machine
 
 	sudo apt-get update -y
 
@@ -164,13 +165,13 @@ Launch an Ubuntu EC2 instance that will host the deployed Docker container.
 
 	newgrp docker
 	
-# 6. Configure EC2 as Self-Hosted GitHub Runner
+## 6. Configure EC2 as Self-Hosted GitHub Runner
 
 GitHub repo → Settings → Actions → Runners → New self-hosted runner → Choose OS →  
 Run the generated commands one by one in the EC2 terminal
 
 
-# 7. Setup GitHub Secrets
+## 7. Setup GitHub Secrets
 
 GitHub repo → Settings → Secrets and variables → Actions
 
@@ -180,14 +181,14 @@ GitHub repo → Settings → Secrets and variables → Actions
 
 	AWS_REGION=us-east-1
 
-	AWS_ECR_LOGIN_URI=471112652353.dkr.ecr.us-east-1.amazonaws.com
+	AWS_ECR_LOGIN_URI=851725646816.dkr.ecr.us-east-1.amazonaws.com
 
 	ECR_REPOSITORY_NAME=mlproject
 
 
-## 🚀 Model Deployment Architecture
+# 🚀 Model Deployment Architecture
 
-# Model and Vectorizer Storage (AWS S3)
+## Model and Vectorizer Storage (AWS S3)
 
 The trained model (`lgbm_model.pkl`) and TF-IDF vectorizer (`tfidf_vectorizer.pkl`) are uploaded and stored in an AWS S3 bucket:
 
@@ -196,7 +197,7 @@ s3://youtube-sentiment-bucket/
 This allows the deployment container to dynamically download the latest model artifacts during runtime.
 
 
-# Docker Container Runtime Flow
+## Docker Container Runtime Flow
 
 When the GitHub Actions pipeline completes deployment, the Docker container is started on the EC2 instance.  
 At container startup, the `start.sh` script executes:
@@ -206,9 +207,9 @@ This performs the following steps:
 2. Download TF-IDF vectorizer from AWS S3
 3. Start Flask API serving the model	
 
-## 🔌 Chrome Extension Integration
+# 🔌 Chrome Extension Integration
 
-# Final Deployment Step
+## Final Deployment Step
 
 After deployment, the Chrome extension uses the EC2 public IP as the API endpoint to perform sentiment analysis.
 
@@ -220,7 +221,7 @@ This URL is configured inside the Chrome extension `popup.js`:
 
 **const API_URL = 'http://100.30.171.39:8080/';**
 
-## Configure EC2 Security Group
+### Configure EC2 Security Group
 
 To allow the Chrome extension to access the deployed API, update the EC2 Security Group inbound rules:
 
