@@ -243,7 +243,6 @@ Without this rule, the Chrome extension will not be able to communicate with the
 # Sentiment Distribution Chart: 
 ## Visual breakdown of positive, neutral, and negative comments:
 ![Sentiment Chart](screenshots/extension/sentiment-chart.png)
-Visual breakdown of positive, neutral, and negative comments.
 
 # Word Cloud: 
 ## Most frequent keywords extracted from YouTube comments:
