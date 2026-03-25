@@ -234,3 +234,27 @@ Source: 0.0.0.0/0
 This allows external access to the Flask API running inside the Docker container on port 8080.
 
 Without this rule, the Chrome extension will not be able to communicate with the deployed API.
+
+# Extension Dashboard:
+![Extension Dashboard](screenshots/extension/extension-dashboard.png)
+Real-time sentiment analysis of YouTube comments.
+
+# Sentiment Distribution Chart
+![Sentiment Chart](screenshots/extension/sentiment-chart.png)
+Visual breakdown of positive, neutral, and negative comments.
+
+# Word Cloud
+![Word Cloud](screenshots/extension/word-cloud.png)
+Most frequent keywords extracted from YouTube comments.
+
+# Comments Analysis
+![Comments Analysis](screenshots/extension/comments-analysis.png)
+Individual comment classification with sentiment labels.
+
+# 🚀 CI/CD Pipeline
+![GitHub Actions](screenshots/ci-cd/github-actions-success.png)
+GitHub Actions continuous deployment pipeline successfully deploying to AWS.
+
+# ☁️ AWS Self-Hosted Runner
+![Self Hosted Runner](screenshots/aws/self-hosted-runner.png)
+Self-hosted GitHub runner configured on AWS EC2 instance.
