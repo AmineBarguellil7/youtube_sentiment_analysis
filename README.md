@@ -144,7 +144,7 @@ Create an IAM user with the following permissions:
 ## 3. Create ECR Repository to Store Docker Image
 
 Create a repository in AWS ECR and save the repository URI: Example:
-    - Save the URI: 851725646816.dkr.ecr.us-east-1.amazonaws.com/mlproject
+    - Save the URI: 339713020180.dkr.ecr.us-east-1.amazonaws.com/mlproject
 
 	
 ## 4. Create EC2 Instance (Ubuntu)
@@ -181,7 +181,7 @@ GitHub repo → Settings → Secrets and variables → Actions
 
 	AWS_REGION=us-east-1
 
-	AWS_ECR_LOGIN_URI=851725646816.dkr.ecr.us-east-1.amazonaws.com
+	AWS_ECR_LOGIN_URI=339713020180.dkr.ecr.us-east-1.amazonaws.com
 
 	ECR_REPOSITORY_NAME=mlproject
 
