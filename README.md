@@ -235,22 +235,28 @@ This allows external access to the Flask API running inside the Docker container
 
 Without this rule, the Chrome extension will not be able to communicate with the deployed API.
 
-# Extension Dashboard: Real-time sentiment analysis of YouTube comments.
+# Extension Dashboard: 
+## Real-time sentiment analysis of YouTube comments:
 ![Extension Dashboard](screenshots/extension/extension-dashboard.png)
 
 
-# Sentiment Distribution Chart: Visual breakdown of positive, neutral, and negative comments.
+# Sentiment Distribution Chart: 
+## Visual breakdown of positive, neutral, and negative comments:
 ![Sentiment Chart](screenshots/extension/sentiment-chart.png)
 Visual breakdown of positive, neutral, and negative comments.
 
-# Word Cloud: Most frequent keywords extracted from YouTube comments.
+# Word Cloud: 
+## Most frequent keywords extracted from YouTube comments:
 ![Word Cloud](screenshots/extension/word-cloud.png)
 
-# Comments Analysis: Individual comment classification with sentiment labels.
+# Comments Analysis: 
+## Individual comment classification with sentiment labels:
 ![Comments Analysis](screenshots/extension/comments-analysis.png)
 
-# 🚀 CI/CD Pipeline: GitHub Actions continuous deployment pipeline successfully deploying to AWS.
+# 🚀 CI/CD Pipeline: 
+## GitHub Actions continuous deployment pipeline successfully deploying to AWS:
 ![GitHub Actions](screenshots/ci-cd/github-actions-success.png)
 
-# ☁️ AWS Self-Hosted Runner: Self-hosted GitHub runner configured on AWS EC2 instance.
+# ☁️ AWS Self-Hosted Runner: 
+## Self-hosted GitHub runner configured on AWS EC2 instance:
 ![Self Hosted Runner](screenshots/aws/self-hosted-runner.png)
